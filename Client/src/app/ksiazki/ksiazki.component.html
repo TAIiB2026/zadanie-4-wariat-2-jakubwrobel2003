@@ -1,3 +1,8 @@
+<div>
+  <label for="filtr">Szukaj po tytule: </label>
+  <input type="text" name="filtr" [(ngModel)]="filtrTytul" (ngModelChange)="filtruj()" />
+</div>
+
 <table>
     <thead>
         <tr>
@@ -6,17 +11,26 @@
             <th>Cena</th>
             <th>Data wydania</th>
             <th>Edycja</th>
+            <th>Usuń</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let d of (data$ | async)">
+        <tr *ngFor="let d of dane">
             <td>{{d.id}}</td>
             <td>{{d.tytul}}</td>
             <td>{{d.cena | currency:'PLN'}}</td>
             <td>{{d.dataWydania | date:"shortDate"}}</td>
             <td><a [routerLink]="d.id + ''">Przejdź do edycji</a></td>
+            <td><button (click)="usun(d.id)">Usuń</button></td>
         </tr>
     </tbody>
 </table>
 
+<div>
+  <button (click)="poprzedniaStrona()" [disabled]="aktualnaStrona <= 1">← Poprzednia</button>
+  Strona {{ aktualnaStrona }} z {{ liczbaStron }}
+  <button (click)="nastepnaStrona()" [disabled]="aktualnaStrona >= liczbaStron">Następna →</button>
+</div>
+
+<br>
 <a routerLink="/dodawanie">Przejdź do dodawania</a>

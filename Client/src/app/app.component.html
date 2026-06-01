@@ -1,2 +1,8 @@
+<h3>Losowa liczba: {{ losowaLiczba }}</h3>
+<button (click)="toggleSync()">
+  {{ syncing ? 'Zatrzymaj synchronizację' : 'Wznów synchronizację' }}
+</button>
+
+<hr>
 
 <router-outlet></router-outlet>

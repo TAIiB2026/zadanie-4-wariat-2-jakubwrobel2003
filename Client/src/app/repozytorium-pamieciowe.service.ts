@@ -33,10 +33,10 @@ export class RepozytoriumPamiecioweService implements GetDataInterface, FormSubm
     return of(false);
   }
 
-  Get(): Observable<KsiazkaClass[]> {
+Get(tytul?: string, page?: number, pageSize?: number): Observable<KsiazkaClass[]> {
     const kopia = this.data.map(x => new KsiazkaClass(x.id, x.tytul, x.cena, x.dataWydania));
     return of(kopia);
-  }
+}
 
   GetByID(id: number): Observable<KsiazkaClass> {
     const obj = this.data.find(x => x.id === id);

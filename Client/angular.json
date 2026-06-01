@@ -94,6 +94,9 @@
               "buildTarget": "test3:build:development"
             }
           },
+          "options": {
+    "port": 4111
+  },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
